@@ -1,11 +1,11 @@
 from fastapi import FastAPI
 
+
 app = FastAPI()
 
-
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+@app.get("/hello")
+def greet(user:str, age:str):
+    return {"messages": f"Hello {user}, your age: {age}"}
 
 @app.get("/square/{square}")
 def square(square:int):
@@ -17,15 +17,12 @@ def greet(name:str,mood:str):
         return f"hello {name}, Just calm down bro, you are in {mood} mood"
     elif mood == "calm" or mood == "cool":
         return f"hello {name}, good to know that you're in {mood}"
-    elif mood == "netural":
+    elif mood == "neutral":
         return f"hello {name}, want to do something crazy in this {mood} mood"
     else:
         return f"hello Mr. {name}"
 
 @app.get("/add")
 def cal(a:int, b:int,):
-    {    
-        f"The sum of {a} and {b} is: ": f"{a+b}"
-    }
+    return {f"The sum of {a} and {b} is: ": f"{a+b}"}
     
-
